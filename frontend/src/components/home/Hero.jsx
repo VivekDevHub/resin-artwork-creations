@@ -68,13 +68,13 @@ const Hero = () => {
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef(null);
 
-  // Auto advance slide every 3 seconds
+  // Auto advance slide every 5 seconds (gentle & relaxed)
   useEffect(() => {
     if (isPaused) return;
 
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 2800);
+    }, 5000);
 
     return () => clearInterval(timer);
   }, [isPaused, currentSlide]);
@@ -106,16 +106,16 @@ const Hero = () => {
 
   return (
     <section
-      className="relative bg-[#FFF9F5] overflow-hidden pt-3 sm:pt-6 pb-12 md:pb-16"
+      className="relative bg-[#FFF9F5] overflow-hidden pt-2 sm:pt-6 pb-8 md:pb-14"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       aria-label="Main Showcase Carousel"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Carousel Wrapper Card */}
-        <div className="relative rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#F4B6C2]/60 min-h-[520px] sm:min-h-[560px] md:min-h-[600px] flex items-center bg-[#2B1B20]">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        {/* Main Carousel Wrapper */}
+        <div className="relative rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-xl border border-[#F4B6C2]/50 aspect-[4/5] sm:aspect-[16/10] md:aspect-[21/9] min-h-[460px] sm:min-h-[480px] md:min-h-[520px] bg-[#1C1215]">
           {/* Carousel Slides */}
           {heroSlides.map((slide, idx) => {
             const isActive = idx === currentSlide;
@@ -129,78 +129,68 @@ const Hero = () => {
                     : 'opacity-0 pointer-events-none invisible -z-10'
                 }`}
               >
-                {/* Background Image / Banner */}
-                <picture className="w-full h-full">
-                  <source media="(max-width: 767px)" srcSet={slide.mobileImage} />
-                  <source media="(min-width: 768px)" srcSet={slide.desktopImage} />
-                  <img
-                    src={slide.desktopImage}
-                    alt={slide.headline}
-                    className="w-full h-full object-cover object-center"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = '/assets/products/product-01.png';
-                    }}
-                  />
-                </picture>
+                {/* 100% Sharp Background Image (NO blur filter, crystal clear artwork) */}
+                <img
+                  src={slide.desktopImage}
+                  alt={slide.headline}
+                  className={`w-full h-full object-cover object-center transition-transform duration-[6000ms] ease-out ${
+                    isActive ? 'scale-105' : 'scale-100'
+                  }`}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/assets/products/product-01.png';
+                  }}
+                />
 
-                {/* Subtle Cinematic Vignette for maximum image beauty */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 md:bg-gradient-to-r md:from-black/60 md:via-black/25 md:to-transparent" />
+                {/* Gentle directional gradient only at edges for text readability (NO dark center box!) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/30 md:to-transparent" />
 
-                {/* Slide Text Content inside Frosted Luxury Glass Card */}
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full max-w-7xl mx-auto px-5 sm:px-10 lg:px-14 py-8 md:py-0">
-                    <div className="max-w-xl lg:max-w-xl bg-black/60 md:bg-black/55 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-white/20 shadow-2xl text-left space-y-4 sm:space-y-5 text-white">
-                      {/* Tag & Badge */}
-                      <div className="flex items-center gap-2.5 flex-wrap">
-                        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[#DFBA3C] text-[11px] sm:text-xs font-semibold border border-[#DFBA3C]/40">
-                          <Sparkles className="w-3.5 h-3.5 text-[#DFBA3C]" />
-                          <span>{slide.tag}</span>
-                        </span>
-                        <span className="badge-gold text-[10px] sm:text-xs font-bold uppercase tracking-wider">
-                          {slide.badge}
-                        </span>
-                      </div>
+                {/* Floating Top Badge (Clean & Subtle) */}
+                <div className="absolute top-4 left-4 sm:top-7 sm:left-8 z-20 flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 text-[#7A1738] text-[10px] sm:text-xs font-bold tracking-wide shadow-md backdrop-blur-sm">
+                    <Sparkles className="w-3 h-3 text-[#C9A227]" />
+                    <span>{slide.tag}</span>
+                  </span>
+                  <span className="hidden sm:inline-flex px-2.5 py-1 rounded-full bg-[#DFBA3C] text-black text-[10px] font-bold uppercase tracking-wider shadow">
+                    {slide.badge}
+                  </span>
+                </div>
 
-                      {/* Headline */}
-                      <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.2]">
-                        {slide.headline.split(',')[0]}
-                        {slide.headline.includes(',') && (
-                          <span className="block italic font-normal font-serif text-[#F4B6C2] mt-1">
-                            {slide.headline.split(',').slice(1).join(',')}
-                          </span>
-                        )}
-                      </h1>
+                {/* Content Overlay: Anchored smoothly so the artwork remains 100% visible */}
+                <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-8 md:p-12 lg:p-14 z-20">
+                  <div className="max-w-xl text-left space-y-2 sm:space-y-3.5">
+                    {/* Headline */}
+                    <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight drop-shadow-md">
+                      {slide.headline}
+                    </h1>
 
-                      {/* Subheading */}
-                      <p className="text-xs sm:text-sm md:text-base text-rose-100/90 leading-relaxed">
-                        {slide.subheading}
-                      </p>
+                    {/* Subheading */}
+                    <p className="text-xs sm:text-sm md:text-base text-rose-100 font-light leading-relaxed max-w-lg drop-shadow line-clamp-2 sm:line-clamp-3">
+                      {slide.subheading}
+                    </p>
 
-                      {/* Action Buttons */}
-                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
-                        <Link
-                          to={slide.primaryBtn.link}
-                          className="btn-primary text-xs sm:text-sm px-6 py-3 font-bold shadow-xl flex items-center justify-center gap-2 group"
-                        >
-                          <span>{slide.primaryBtn.text}</span>
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
-                        </Link>
+                    {/* CTAs */}
+                    <div className="pt-2 sm:pt-3 flex items-center gap-3">
+                      <Link
+                        to={slide.primaryBtn.link}
+                        className="bg-[#D81B60] hover:bg-[#b0134b] text-white text-xs sm:text-sm font-bold px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+                      >
+                        <span>{slide.primaryBtn.text}</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
 
-                        <Link
-                          to={slide.secondaryBtn.link}
-                          className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold text-white border border-white/40 hover:bg-white/20 backdrop-blur-md transition text-xs sm:text-sm"
-                        >
-                          <Sparkles className="w-4 h-4 text-[#DFBA3C]" />
-                          <span>{slide.secondaryBtn.text}</span>
-                        </Link>
-                      </div>
+                      <Link
+                        to={slide.secondaryBtn.link}
+                        className="bg-white/20 hover:bg-white/35 text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 sm:py-3.5 rounded-full backdrop-blur-md border border-white/40 hover:border-white transition-all flex items-center gap-1.5"
+                      >
+                        <span>{slide.secondaryBtn.text}</span>
+                      </Link>
+                    </div>
 
-                      {/* Floating Accent Stamp */}
-                      <div className="pt-1 text-[11px] sm:text-xs text-[#DFBA3C] flex items-center gap-2 font-medium">
-                        <Heart className="w-3.5 h-3.5 fill-[#D81B60] text-[#D81B60]" />
-                        <span>{slide.accentText}</span>
-                      </div>
+                    {/* Location & Trust Subtext */}
+                    <div className="hidden sm:flex items-center gap-2 text-[11px] text-[#DFBA3C] pt-1 font-medium drop-shadow">
+                      <Heart className="w-3.5 h-3.5 fill-[#D81B60] text-[#D81B60]" />
+                      <span>{slide.accentText}</span>
                     </div>
                   </div>
                 </div>
@@ -208,46 +198,43 @@ const Hero = () => {
             );
           })}
 
-          {/* Navigation Controls: Arrow Buttons */}
+          {/* Sleek Floating Arrow Controls (Desktop & Mobile) */}
           <button
             onClick={handlePrev}
-            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-200 active:scale-90 hover:scale-105 shadow-lg"
+            className="absolute left-2.5 sm:left-5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all active:scale-90 shadow-md"
             title="Previous Slide"
             aria-label="Previous Slide"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
           </button>
 
           <button
             onClick={handleNext}
-            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-200 active:scale-90 hover:scale-105 shadow-lg"
+            className="absolute right-2.5 sm:right-5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all active:scale-90 shadow-md"
             title="Next Slide"
             aria-label="Next Slide"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
           </button>
 
-          {/* Pagination Indicators & Counter */}
-          <div className="absolute bottom-5 sm:bottom-8 inset-x-0 z-20 flex items-center justify-center gap-3">
-            <div className="bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 flex items-center gap-3">
-              {heroSlides.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentSlide(idx)}
-                  className={`h-2 rounded-full transition-all duration-500 ${
-                    idx === currentSlide
-                      ? 'w-7 bg-gradient-to-r from-[#DFBA3C] to-[#D81B60]'
-                      : 'w-2 bg-white/50 hover:bg-white/80'
-                  }`}
-                  title={`Go to slide ${idx + 1}`}
-                  aria-label={`Slide ${idx + 1}`}
-                />
-              ))}
-
-              <span className="text-[10px] text-white/80 font-mono font-medium ml-1">
-                0{currentSlide + 1} / 0{heroSlides.length}
-              </span>
-            </div>
+          {/* Clean Pagination Pill Indicators */}
+          <div className="absolute bottom-3 sm:bottom-6 right-4 sm:right-10 z-30 flex items-center gap-1.5 sm:gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15">
+            {heroSlides.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  idx === currentSlide
+                    ? 'w-6 bg-[#DFBA3C]'
+                    : 'w-1.5 bg-white/40 hover:bg-white/70'
+                }`}
+                title={`Go to slide ${idx + 1}`}
+                aria-label={`Slide ${idx + 1}`}
+              />
+            ))}
+            <span className="text-[10px] text-white/90 font-mono font-medium ml-1">
+              0{currentSlide + 1}/0{heroSlides.length}
+            </span>
           </div>
         </div>
 
