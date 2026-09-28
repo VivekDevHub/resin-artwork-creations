@@ -198,44 +198,24 @@ const Hero = () => {
             );
           })}
 
-          {/* Sleek Floating Arrow Controls (Desktop & Mobile) */}
+          {/* Sleek Floating Arrow Controls (Desktop / Tablet, touch-swipe on mobile) */}
           <button
             onClick={handlePrev}
-            className="absolute left-2.5 sm:left-5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all active:scale-90 shadow-md"
+            className="hidden sm:flex absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 items-center justify-center transition-all active:scale-90 shadow-md"
             title="Previous Slide"
             aria-label="Previous Slide"
           >
-            <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
 
           <button
             onClick={handleNext}
-            className="absolute right-2.5 sm:right-5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all active:scale-90 shadow-md"
+            className="hidden sm:flex absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/30 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 items-center justify-center transition-all active:scale-90 shadow-md"
             title="Next Slide"
             aria-label="Next Slide"
           >
-            <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
+            <ChevronRight className="w-6 h-6" />
           </button>
-
-          {/* Clean Pagination Pill Indicators */}
-          <div className="absolute bottom-3 sm:bottom-6 right-4 sm:right-10 z-30 flex items-center gap-1.5 sm:gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15">
-            {heroSlides.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  idx === currentSlide
-                    ? 'w-6 bg-[#DFBA3C]'
-                    : 'w-1.5 bg-white/40 hover:bg-white/70'
-                }`}
-                title={`Go to slide ${idx + 1}`}
-                aria-label={`Slide ${idx + 1}`}
-              />
-            ))}
-            <span className="text-[10px] text-white/90 font-mono font-medium ml-1">
-              0{currentSlide + 1}/0{heroSlides.length}
-            </span>
-          </div>
         </div>
 
         {/* Quick Boutique Trust Strip */}
