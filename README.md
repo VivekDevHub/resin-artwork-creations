@@ -1,106 +1,157 @@
-# RESIN ARTWORK CREATIONS
-### *By Mahima Choukse — Handcrafted Luxury in Indore, India*
+# ✨ RESIN ARTWORK CREATIONS
+### *By Mahima Choukse — 🏆 #1 in Indore | Heirloom Specialist*
+> **Owner**: श्री सांवरिया सेठ ❤️  
+> **Studio**: PVWH+JQ9, Road No. 26, New Gori Nagar, Nanda Nagar, Indore, MP 452011  
+> **WhatsApp**: [+91 93290 28062](https://wa.me/919329028062) | **Instagram**: [@resin_artworkk_creations](https://www.instagram.com/resin_artworkk_creations?igsh=eHk5N2pianpseXQy&utm_source=qr) | **Maps**: [Google Maps Location](https://maps.app.goo.gl/7sPc6mvjTggsmeL66)
 
-A complete, production-style, responsive full-stack e-commerce web boutique built for **Resin Artwork Creations**. This platform delivers a luxury handmade-art boutique experience with custom commissions, personalized flower preservation, real-time inventory management, Cash on Delivery, Razorpay online payments with zero-cost demo simulation, and an integrated admin portal.
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/VivekDevHub/resin-artwork-creations)
+[![Node Version](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=node.js)](https://nodejs.org/)
+[![React Version](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-6.0%2B-47A248?style=for-the-badge&logo=mongodb)](https://www.mongodb.com/)
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
----
-
-## Brand Identity & Aesthetic
-
-- **Brand Name**: Resin Artwork Creations
-- **Founder & Artist**: Mahima Choukse
-- **Studio Location**: Indore, Madhya Pradesh, India
-- **Core Craft**: High-gloss epoxy resin wall art, geode clocks, preserved wedding garland (*varmala*) frames, scented soy wax candles, artisanal hampers, cold-pressed soaps, and couple hand castings.
-- **Visual Design System**:
-  - **Blush Pink**: `#F8DDE5`
-  - **Soft Pink**: `#F4B6C2`
-  - **Rose Accent**: `#D81B60`
-  - **Deep Burgundy**: `#7A1738`
-  - **Warm Cream**: `#FFF9F5`
-  - **Metallic Gold**: `#C9A227` / `#DFBA3C`
-  - **Dark Base**: `#2B1B20`
-- **Typography**: *Cormorant Garamond* & *Playfair Display* for luxury serif headings, *Poppins* for body text, and *Great Vibes* script for bespoke artisan accents.
+A modern, production-ready, full-stack luxury e-commerce web boutique built for **Resin Artwork Creations by Mahima Choukse**. This platform delivers an ultra-premium handcrafted art boutique experience featuring custom heirloom commissions (2000+ varmala flower preservations), real-time inventory management, cash on delivery, Razorpay online payments with zero-cost demo simulation, an executive admin portal, and a responsive mobile experience.
 
 ---
 
-## Tech Stack
+## 🌟 Brand Story & Philosophy
 
-### Frontend
-- **Framework**: React 18 with Vite
-- **Styling**: Tailwind CSS with custom boutique design tokens, glassmorphism blur and smooth transitions
-- **Routing**: React Router DOM v6
-- **Icons**: Lucide React
-- **HTTP Client**: Axios with token injection interceptors
-- **State Management**: React Context API (`AuthContext`, `CartContext`, `WishlistContext`, `ToastContext`)
-- **Visual Celebration**: Canvas Confetti for order confirmation
+> *"Four years ago, I started this journey with a simple love for creativity and a dream of building something of my own. I learned along the way. I made mistakes. I tried, failed, experimented, started again, and discovered something new with every creation. Every challenge became a lesson, and every lesson helped me become the artist and entrepreneur I am today.*  
+>  
+> *With 2000+ varmala preservations and countless memories preserved over the years, every order has added a new story to my journey. For me, resin art has never been just about creating something beautiful. It is about preserving emotions."*  
+> — **Mahima Choukse**, Founder & Resin Artist
 
-### Backend
-- **Runtime**: Node.js & Express.js (ES Modules)
-- **Database**: MongoDB & Mongoose
-- **Security**: JWT Authentication, bcryptjs password hashing, Helmet security headers, CORS, Express rate limiting
-- **Payment Gateway**: Razorpay Node SDK with built-in `DEMO_PAYMENT_MODE` simulator
-- **Logging**: Morgan HTTP logger
+- **Heirloom Specialist**: Preserving sacred wedding varmalas, bridal chooda & kaleere forever in non-yellowing, crystal-clear epoxy.
+- **Bespoke Statement Decor**: High-gloss geode wall clocks with real rose quartz, custom river tables, and name plaques with 24K liquid gold.
+- **Festive & Celebratory Gifting**: Pure soy wax pastel modak candles with silver/gold leaf, holiday gingerbread & pine candles, and handcrafted floral rakhis.
 
 ---
 
-## Key Features
+## 🎨 Visual Identity & Color Palette
+
+- **Blush Pink (`#F8DDE5`)** & **Soft Rose (`#F4B6C2`)**: Warm luxury boutique undertones
+- **Vibrant Magenta Rose (`#D81B60`)**: Primary interactive accents & callouts
+- **Deep Royal Burgundy (`#7A1738`)**: Sophisticated brand typography & borders
+- **Warm Ivory / Alabaster (`#FFF9F5`)**: Background canvas ensuring comfort
+- **Metallic Gold (`#C9A227` / `#DFBA3C`)**: Artisan gold-leaf badge & review highlights
+- **Obsidian Noir (`#2B1B20`)**: High-contrast luxury headings and dark card accents
+- **Typography**: *Cormorant Garamond* & *Playfair Display* for luxury serif titles, *Poppins* for UI body, and *Great Vibes* for artisan calligraphy.
+
+---
+
+## 🚀 Key Features
 
 ### 🛍️ Client & Customer Storefront
-1. **Curated Hero Showcase**: Incorporates high-resolution brand banners, tagline badges, and interactive CTAs.
-2. **8 Artisan Categories**: Resin Art, Resin Gifts, Scented Candles, Gift Hampers, Clocks, Handmade Soaps, Hand Casting, Personalized Gifts.
-3. **20+ Demo Products**: Pre-seeded with authentic photography, prices, original strike-through discounts, material specifications, and care instructions.
-4. **Interactive Product Cards**: Image hover transitions, instant Quick View modal, wishlist heart toggle, and fast Add to Bag button.
-5. **Shop Catalog**: Multi-criteria filters by category, price range, and star rating, with flexible sorting (Featured, Price, Newest, Popular).
-6. **Product Detail Page**: Multi-angle image gallery, custom name/quote personalization input, verified patron review submission, and related pieces.
-7. **Slide-Over Cart Drawer & Cart Page**: Real-time totals, free shipping progress bar (Free shipping above ₹999), and coupon code validator (`WELCOME10`, `MAHIMA15`, `FESTIVE20`).
-8. **Checkout Flow**: Support for **Cash on Delivery (COD)** and **Online Payment (Razorpay)** with built-in instant simulator when live gateway credentials are not present.
-9. **Order Timeline Tracking**: 5-stage progress stepper (`Confirmed` → `Processing` → `Shipped` → `Out for Delivery` → `Delivered`) with courier notes and dispatch timestamps.
-10. **Bespoke Custom Orders**: Commission intake form for wedding garland preservation, custom clocks, and name plaques, with instant WhatsApp handoff.
-11. **Mobile Bottom Navigation**: Fixed bottom bar on mobile screens with badges for live cart and wishlist counts.
-12. **Floating WhatsApp Assistance**: 1-click customer connection directly to Mahima Choukse.
+1. **Dynamic Hero Showcase Carousel**:
+   - High-definition widescreen (16:9) banners showcasing actual atelier creations.
+   - **Automatic rotation every 3 seconds** with intelligent hover/touch pause.
+   - Luxury frosted glassmorphic card (`backdrop-blur-xl`) with crisp typography and gold badges.
+2. **Authentic Product Catalog**:
+   - 29+ pre-seeded atelier products with authentic photography from the studio.
+   - Real-world pricing, stock counts, discount tags, dimensions, material composition, and care guides.
+3. **8 Curated Artisan Categories**:
+   - **Pooja Decor & Thali Sets**: Resin Ganesha trays & floral diya sets
+   - **Heirloom & Varmala Frames**: 3D wedding flower & chooda keepsake frames
+   - **Modak & Festive Candles**: Pastel handcrafted soy wax with 24K gold foil
+   - **Pet Memorial Keepsakes**: Fur & paw print resin lockets and keychains
+   - **Invitation Plaques & Geode Art**: Royal maroon & champagne gold plaques
+   - **Curated Festive Hampers**: Luxury gift box sets with modak candles
+   - **Handmade Floral Rakhis**: Preserved rosebud & daisy loomba sets
+   - **Winter Holiday Collection**: Gingerbread man & pine tree sculpted candles
+4. **Interactive Shopping Experience**:
+   - Instant Quick View modal without leaving the browsing page.
+   - Wishlist heart toggle with persistent local and cloud storage.
+   - Multi-criteria filter by category, price slider, and rating, with flexible sorting.
+5. **Seamless Cart & Checkout**:
+   - Slide-over Cart Drawer with real-time subtotal calculation.
+   - Free shipping progress bar (Free delivery above ₹999).
+   - Promotional coupon engine (`WELCOME10`, `MAHIMA15`, `FESTIVE20`).
+   - Support for **Cash on Delivery (COD)** and **Razorpay Online Payments**.
+   - Built-in `DEMO_PAYMENT_MODE` simulator for hassle-free testing without real money.
+6. **Order Timeline Stepper**:
+   - 5-stage live status tracking (`Confirmed` → `Processing` → `Shipped` → `Out for Delivery` → `Delivered`).
+7. **Custom Order Commission Intake (`/custom-orders`)**:
+   - Multi-step form for flower preservation, couple plaques, and custom resin furniture.
+   - Direct 1-click WhatsApp handoff to Mahima Choukse (+91 93290 28062).
+8. **Responsive Mobile Design**:
+   - Bottom navigation bar with live cart and wishlist count badges.
+   - Persistent WhatsApp float button for instant inquiries.
 
 ### 🛡️ Administrative Portal (`/admin`)
-1. **Executive Dashboard**: Real-time metrics for total revenue, total orders, catalog count, customer directory, and 6-month monthly revenue trends.
-2. **Product Catalog Manager**: Add, edit, and delete products, update price and stock, change category, and toggle `Featured` / `Best Seller` badges.
-3. **Fulfillment & Order Management**: Filter orders by status, inspect customer and shipping addresses, update status phases, and append courier tracking notes.
-4. **Custom Inquiries Review**: Review custom commission requests, set formal quotes (₹), view client reference photos, and update inquiry statuses.
-5. **Promotions & Coupons**: Create and manage discount codes, set max discount caps, and enforce minimum order values.
-6. **Patron Directory**: View customer profiles, emails, phones, and locations.
+1. **Executive Analytics Dashboard**:
+   - Revenue totals, order counts, customer count, and 6-month visual revenue trends.
+2. **Product Catalog Manager**:
+   - Add, edit, and delete products, manage photo URLs, update stock, and toggle `Featured` / `Best Seller` badges.
+3. **Order Fulfillment System**:
+   - Inspect shipping addresses, customer phone numbers, update status phases, and append courier tracking notes.
+4. **Custom Order Commission Management**:
+   - Review customer flower preservation requests, set custom quotation amounts (₹), add internal studio notes, and approve orders.
+5. **Coupons & Promotional Discounts**:
+   - Manage discount percentages, validity dates, usage caps, and minimum order values.
+6. **Customer Directory**:
+   - View registered patrons, their saved delivery addresses, and purchase histories.
 
 ---
 
-## Credentials (Demo)
+## 💻 Tech Stack
 
-### 👑 Admin Account
+### Frontend
+- **Framework**: [React 18](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS 3.4](https://tailwindcss.com/) with custom luxury color tokens & glassmorphism utilities
+- **Routing**: [React Router DOM v6](https://reactrouter.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **HTTP Client**: [Axios](https://axios-http.com/) with automatic Bearer token injection
+- **State Management**: React Context (`AuthContext`, `CartContext`, `WishlistContext`, `ToastContext`)
+- **Celebration Effects**: `canvas-confetti`
+
+### Backend
+- **Runtime**: [Node.js](https://nodejs.org/) & [Express.js](https://expressjs.com/) (ES Modules)
+- **Database**: [MongoDB](https://www.mongodb.com/) via [Mongoose ODM](https://mongoosejs.com/)
+- **Authentication**: JSON Web Tokens (JWT) & `bcryptjs` password hashing
+- **Security**: [Helmet](https://helmetjs.github.io/), CORS whitelist, Express rate limiter
+- **Payment Gateway**: [Razorpay](https://razorpay.com/) Node SDK with built-in instant test simulator
+- **HTTP Logging**: [Morgan](https://github.com/expressjs/morgan)
+
+---
+
+## 🔑 Demo Credentials
+
+### 👑 Admin Portal
 - **URL**: `http://localhost:5174/admin/login`
-- **Email**: `admin@resinartwork.com`
-- **Password**: `Admin@123`
-*(A 1-click test button is also provided directly on the login screen for quick evaluation)*
+- **Email**: `admin@resinartworkcreations.com`
+- **Password**: `admin123`
+*(A 1-click test button is available on the login page for rapid evaluation)*
 
 ### 👤 Customer Account
 - **URL**: `http://localhost:5174/login`
 - **Email**: `priya.sharma@example.com`
-- **Password**: `Customer@123`
+- **Password**: `customer123`
 
 ---
 
-## Getting Started
+## 🛠️ Getting Started
 
 ### 1. Prerequisites
-- **Node.js** (v18 or higher)
-- **MongoDB** (Local instance running at `mongodb://127.0.0.1:27017` or MongoDB Atlas URI)
+- **Node.js** (v18.0.0 or higher)
+- **MongoDB** (Local daemon running at `mongodb://127.0.0.1:27017` or MongoDB Atlas URI)
+- **Git**
 
-### 2. Installation
-Clone the repository and install all dependencies:
-
+### 2. Clone & Install
 ```bash
-# In the project root directory
+git clone https://github.com/VivekDevHub/resin-artwork-creations.git
+cd resin-artwork-creations
+
+# Install root dependencies
 npm install
+
+# Install backend dependencies
 npm --prefix backend install
+
+# Install frontend dependencies
 npm --prefix frontend install
 ```
 
-### 3. Environment Variables Setup
+### 3. Environment Configuration
 
 #### Backend (`backend/.env`):
 ```env
@@ -121,119 +172,108 @@ VITE_RAZORPAY_KEY_ID=rzp_test_resinart2026
 VITE_WHATSAPP_NUMBER=+919329028062
 ```
 
-### 4. Seed the Database
-Populate 20 products, 8 categories, 10 orders, customer accounts, coupons, and custom order inquiries:
+### 4. Database Seeding
+Populate MongoDB with 29 authentic products, 8 categories, customer reviews, demo orders, and admin credentials:
 
 ```bash
+npm --prefix backend run seed
+# or from root:
 npm run seed
 ```
 
-### 5. Run the Application
-Launch both backend and frontend concurrently:
+### 5. Launch Development Server
+Run backend and frontend concurrently in a single terminal:
 
 ```bash
 npm run dev
 ```
 
-- **Frontend**: `http://localhost:5174` (or `http://localhost:5173`)
-- **Backend API**: `http://localhost:5001/api`
-- **API Health Check**: `http://localhost:5001/api/health`
+- **Frontend Application**: `http://localhost:5174` (or `http://localhost:5173`)
+- **Backend REST API**: `http://localhost:5001/api`
+- **Health Check Endpoint**: `http://localhost:5001/api/health`
 
-Alternatively, you can run them in separate terminals:
-```bash
-# Terminal 1 - Backend
-npm run dev:backend
+---
 
-# Terminal 2 - Frontend
-npm run dev:frontend
+## 💳 Payment Simulation Guide
+
+### 💵 Cash on Delivery (COD)
+1. Add any product to your cart and proceed to Checkout.
+2. Select **Cash on Delivery (COD)** under payment options.
+3. Click **Place Order**. You will receive an instant `RAC-2026-XXXXXX` order confirmation with `Pending COD` status.
+
+### 💳 Razorpay Online Payment (Demo Mode)
+1. Select **Online Payment (Razorpay)** at checkout.
+2. The built-in simulator modal appears, allowing you to test full order fulfillment without incurring real banking charges.
+3. Click **Simulate Successful Payment**. The order is cryptographically verified and marked as `Paid`.
+4. *(To switch to live Razorpay, provide your live credentials in `backend/.env` and toggle `DEMO_PAYMENT_MODE=false`)*.
+
+---
+
+## 📁 Repository Structure
+
+```text
+resin-artwork-creations/
+├── package.json                 # Root script runner (concurrent dev, seeder)
+├── README.md                    # Project documentation
+├── backend/
+│   ├── package.json
+│   ├── .env.example
+│   └── src/
+│       ├── server.js            # Express server entry point
+│       ├── config/              # MongoDB connection configuration
+│       ├── models/              # User, Product, Category, Order, Review, CustomOrder, Coupon
+│       ├── controllers/         # Auth, Product, Order, Payment, CustomOrder, Analytics
+│       ├── routes/              # RESTful API endpoints (/api/*)
+│       ├── middleware/          # JWT protect, Admin authorization, Error handlers
+│       └── utils/               # Database seeder script
+└── frontend/
+    ├── package.json
+    ├── vite.config.js           # Vite config with backend proxy (:5001)
+    ├── tailwind.config.js       # Luxury design system tokens
+    ├── public/
+    │   └── assets/              # High-definition hero banners and logo
+    │       └── products/        # 30+ authentic atelier product photos
+    └── src/
+        ├── App.jsx              # Application router & protected routes
+        ├── main.jsx             # React DOM entry point
+        ├── index.css            # Custom CSS utilities & glassmorphism
+        ├── context/             # Auth, Cart, Wishlist, Toast state providers
+        ├── services/            # Axios API client
+        ├── components/
+        │   ├── common/          # Navbar, BottomNav, Footer, ProductCard, CartDrawer, QuickView
+        │   └── home/            # Hero carousel (3s rotate), Categories, BestSellers, Reviews, Social
+        └── pages/
+            ├── Home, Shop, ProductDetails, Categories, About, CustomOrders, Contact, Cart, Checkout
+            └── admin/           # Dashboard, Products, Orders, Customers, CustomOrders, Analytics
 ```
 
 ---
 
-## Testing Payment Flows
+## 🚢 Deployment
 
-### 💵 Cash on Delivery (COD)
-1. Add any creation to your bag.
-2. Proceed to checkout and select **Cash on Delivery**.
-3. Click **Place Order**. You will immediately receive order confirmation with unique ID `RAC-2026-XXXXXX` and status `COD`.
-
-### 💳 Online Payment (Razorpay & Demo Mode)
-1. In checkout, select **Online Payment (Razorpay)**.
-2. Because `DEMO_PAYMENT_MODE=true` is enabled, a simulation modal will appear confirming test mode.
-3. Click **Simulate Successful Payment**. The order will be cryptographically verified and recorded as `Paid`.
-4. *To switch to live Razorpay payments, provide your actual `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` in `backend/.env` and set `DEMO_PAYMENT_MODE=false`.*
-
----
-
-## Deployment Guide
-
-### Frontend Deployment (Vercel)
-1. Import the repository into [Vercel](https://vercel.com).
+### Frontend (Vercel)
+1. Link your GitHub repository on [Vercel](https://vercel.com).
 2. Set **Root Directory** to `frontend`.
 3. Set **Framework Preset** to `Vite`.
 4. Add Environment Variable:
-   - `VITE_API_URL`: Your deployed backend URL (e.g. `https://resin-art-backend.onrender.com/api`).
-5. Deploy.
+   - `VITE_API_URL`: `https://your-backend-service.onrender.com/api`
+5. Click **Deploy**.
 
-### Backend Deployment (Render or Railway)
-1. Create a new **Web Service** on [Render](https://render.com) or [Railway](https://railway.app).
-2. Set **Root Directory** to `backend`.
-3. Set **Build Command**: `npm install`.
-4. Set **Start Command**: `npm start`.
-5. Configure Environment Variables:
-   - `PORT`: `5001` (or automatic from cloud provider)
-   - `MONGO_URI`: Your MongoDB Atlas connection string (e.g. `mongodb+srv://...`)
-   - `JWT_SECRET`: Secure random string
-   - `CLIENT_URL`: Your Vercel frontend URL
-   - `DEMO_PAYMENT_MODE`: `true` (or `false` with real Razorpay keys)
-6. Once deployed, run the seed command on the server or connect locally to seed the Atlas cluster:
-   `MONGO_URI="mongodb+srv://..." npm run seed`.
+### Backend (Render / Railway)
+1. Create a Web Service connected to the `backend` directory.
+2. Build Command: `npm install`
+3. Start Command: `npm start`
+4. Set environment variables (`MONGO_URI`, `JWT_SECRET`, `CLIENT_URL`, `DEMO_PAYMENT_MODE`).
+5. Seed remote database with `npm run seed`.
 
 ---
 
-## Project Structure
+## 📜 Credits & Contact
 
-```text
-resin-art-creation/
-├── package.json               # Root scripts for concurrently running & seeding
-├── README.md
-├── src/assets/                # Original brand assets (logo.png, banners)
-├── backend/
-│   ├── package.json
-│   ├── .env
-│   ├── .env.example
-│   └── src/
-│       ├── server.js          # Express server with Helmet, CORS & route mounting
-│       ├── config/            # Mongoose DB connection
-│       ├── models/            # User, Product, Category, Order, Review, Wishlist, CustomOrder, Coupon
-│       ├── controllers/       # Auth, Product, Order, Payment, CustomOrder, Analytics
-│       ├── routes/            # REST API endpoints
-│       ├── middleware/        # JWT Protect, Admin Role, Error Handlers
-│       └── utils/             # Database seeder (npm run seed)
-└── frontend/
-    ├── package.json
-    ├── vite.config.js         # Vite dev server with proxy to :5001
-    ├── tailwind.config.js     # Luxury design tokens (blush, burgundy, gold)
-    ├── index.html             # Google Fonts, meta tags & Razorpay checkout script
-    ├── public/assets/         # Brand logo and desktop/mobile banners
-    └── src/
-        ├── App.jsx            # All 22 routes, Protected & Admin guards
-        ├── main.jsx           # Context providers wrapper
-        ├── index.css          # Design system classes, glassmorphism, scrollbars
-        ├── context/           # Auth, Cart, Wishlist, Toast
-        ├── services/          # Axios API client with interceptors
-        ├── layouts/           # RootLayout & AdminLayout
-        ├── components/
-        │   ├── common/        # Navbar, BottomNavigation, Footer, CartDrawer, ProductCard, RatingStars, QuickViewModal
-        │   └── home/          # Hero, Categories, BestSellers, WhyChooseUs, CustomCTA, Reviews, SocialGallery, FAQ
-        └── pages/
-            ├── Home, Shop, ProductDetails, Categories, About, CustomOrders, Contact, Wishlist, Cart, Checkout, OrderSuccess
-            ├── Login, Register, Account, Orders, OrderDetails, NotFound
-            └── admin/         # AdminDashboard, AdminProducts, AdminOrders, AdminCustomers, AdminCustomOrders, AdminAnalytics
-```
-
----
-
-## License & Credits
-
-Artisan concepts, photography curations, and brand identity designed for **Resin Artwork Creations by Mahima Choukse**, Indore, Madhya Pradesh, India.
+- **Founder & Resin Artist**: Mahima Choukse
+- **Brand**: Resin Artwork Creations
+- **Owner**: श्री सांवरिया सेठ ❤️
+- **Studio Address**: PVWH+JQ9, Road No. 26, New Gori Nagar, Nanda Nagar, Indore, Madhya Pradesh 452011
+- **WhatsApp**: [+91 93290 28062](https://wa.me/919329028062)
+- **Instagram**: [@resin_artworkk_creations](https://www.instagram.com/resin_artworkk_creations?igsh=eHk5N2pianpseXQy&utm_source=qr)
+- **GitHub**: [VivekDevHub/resin-artwork-creations](https://github.com/VivekDevHub/resin-artwork-creations)
