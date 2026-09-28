@@ -3,6 +3,11 @@ import { useSearchParams } from 'react-router-dom';
 import { Filter, X, SlidersHorizontal, Search, RefreshCw, Sparkles } from 'lucide-react';
 import ProductCard from '../components/common/ProductCard';
 import api from '../services/api';
+import {
+  USE_DUMMY_DATA,
+  getDummyCategories,
+  getFilteredDummyProducts
+} from '../data/dummyData';
 
 const sortOptions = [
   { label: 'Featured', value: 'featured' },
@@ -41,11 +46,16 @@ const Shop = () => {
     const fetchCats = async () => {
       try {
         const { data } = await api.get('/categories');
-        if (data.success) {
+        if (data.success && data.categories?.length > 0) {
           setCategories(data.categories);
+        } else if (USE_DUMMY_DATA) {
+          setCategories(getDummyCategories());
         }
       } catch (err) {
-        console.warn('Could not fetch categories:', err.message);
+        console.warn('Could not fetch categories from API:', err.message);
+        if (USE_DUMMY_DATA) {
+          setCategories(getDummyCategories());
+        }
       }
     };
     fetchCats();
@@ -66,11 +76,40 @@ const Shop = () => {
         params.append('limit', '30');
 
         const { data } = await api.get(`/products?${params.toString()}`);
-        if (data.success) {
+        if (data.success && data.products?.length > 0) {
           setProducts(data.products);
+        } else if (USE_DUMMY_DATA) {
+          setProducts(
+            getFilteredDummyProducts({
+              category: currentCategory,
+              search: currentSearch,
+              sort: currentSort,
+              minPrice: currentMinPrice,
+              maxPrice: currentMaxPrice,
+              rating: currentRating,
+              limit: 30
+            })
+          );
+        } else {
+          setProducts([]);
         }
       } catch (err) {
         console.warn('Error fetching shop products:', err.message);
+        if (USE_DUMMY_DATA) {
+          setProducts(
+            getFilteredDummyProducts({
+              category: currentCategory,
+              search: currentSearch,
+              sort: currentSort,
+              minPrice: currentMinPrice,
+              maxPrice: currentMaxPrice,
+              rating: currentRating,
+              limit: 30
+            })
+          );
+        } else {
+          setProducts([]);
+        }
       } finally {
         setLoading(false);
       }

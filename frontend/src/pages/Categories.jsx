@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import api from '../services/api';
+import { getDummyCategories, USE_DUMMY_DATA } from '../data/dummyData';
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -11,11 +12,16 @@ const Categories = () => {
     const fetchCategories = async () => {
       try {
         const { data } = await api.get('/categories');
-        if (data.success) {
+        if (data.success && data.categories?.length > 0) {
           setCategories(data.categories);
+        } else if (USE_DUMMY_DATA) {
+          setCategories(getDummyCategories());
         }
       } catch (err) {
         console.warn('Error fetching categories:', err.message);
+        if (USE_DUMMY_DATA) {
+          setCategories(getDummyCategories());
+        }
       } finally {
         setLoading(false);
       }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import ProductCard from '../common/ProductCard';
 import api from '../../services/api';
+import { USE_DUMMY_DATA, getDummyBestSellers } from '../../data/dummyData';
 
 const BestSellers = () => {
   const [products, setProducts] = useState([]);
@@ -17,10 +18,21 @@ const BestSellers = () => {
         } else {
           // Fallback to top products
           const res = await api.get('/products?limit=8&sort=popular');
-          setProducts(res.data.products || []);
+          if (res.data?.success && res.data.products?.length > 0) {
+            setProducts(res.data.products);
+          } else if (USE_DUMMY_DATA) {
+            setProducts(getDummyBestSellers(8));
+          } else {
+            setProducts([]);
+          }
         }
       } catch (err) {
         console.warn('Highlights fetch warning:', err.message);
+        if (USE_DUMMY_DATA) {
+          setProducts(getDummyBestSellers(8));
+        } else {
+          setProducts([]);
+        }
       } finally {
         setLoading(false);
       }

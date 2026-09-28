@@ -19,6 +19,12 @@ import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useToast } from '../context/ToastContext';
 import api from '../services/api';
+import {
+  USE_DUMMY_DATA,
+  getDummyProductByIdOrSlug,
+  getDummyRelatedProducts,
+  getDummyReviews
+} from '../data/dummyData';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -44,19 +50,42 @@ const ProductDetails = () => {
       setLoading(true);
       try {
         const { data } = await api.get(`/products/${id}`);
-        if (data.success) {
+        if (data.success && data.product) {
           setProduct(data.product);
           setRelatedProducts(data.relatedProducts || []);
           setSelectedImgIndex(0);
 
           // Fetch reviews
-          const revRes = await api.get(`/reviews/product/${data.product._id}`);
-          if (revRes.data.success) {
-            setReviews(revRes.data.reviews || []);
+          try {
+            const revRes = await api.get(`/reviews/product/${data.product._id}`);
+            if (revRes.data.success) {
+              setReviews(revRes.data.reviews || []);
+            }
+          } catch (rErr) {
+            if (USE_DUMMY_DATA) {
+              setReviews(getDummyReviews(data.product._id));
+            }
+          }
+        } else if (USE_DUMMY_DATA) {
+          const fallback = getDummyProductByIdOrSlug(id);
+          if (fallback) {
+            setProduct(fallback);
+            setRelatedProducts(getDummyRelatedProducts(fallback._id, fallback.category?.slug));
+            setReviews(getDummyReviews(fallback._id));
+            setSelectedImgIndex(0);
           }
         }
       } catch (err) {
-        console.error('Error fetching product:', err.message);
+        console.warn('Error fetching product from API:', err.message);
+        if (USE_DUMMY_DATA) {
+          const fallback = getDummyProductByIdOrSlug(id);
+          if (fallback) {
+            setProduct(fallback);
+            setRelatedProducts(getDummyRelatedProducts(fallback._id, fallback.category?.slug));
+            setReviews(getDummyReviews(fallback._id));
+            setSelectedImgIndex(0);
+          }
+        }
       } finally {
         setLoading(false);
       }
@@ -138,7 +167,22 @@ const ProductDetails = () => {
         setNewReview({ rating: 5, comment: '', name: '', title: '' });
       }
     } catch (err) {
-      toast.error(err.message);
+      if (USE_DUMMY_DATA) {
+        const localRev = {
+          _id: `rev-local-${Date.now()}`,
+          productId: product._id,
+          name: newReview.name || 'Artisan Collector',
+          rating: newReview.rating,
+          title: newReview.title,
+          comment: newReview.comment,
+          createdAt: new Date().toISOString()
+        };
+        setReviews([localRev, ...reviews]);
+        toast.success('Thank you! Your review has been submitted.');
+        setNewReview({ rating: 5, comment: '', name: '', title: '' });
+      } else {
+        toast.error(err.message);
+      }
     } finally {
       setSubmittingReview(false);
     }
