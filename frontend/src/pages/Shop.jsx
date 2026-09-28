@@ -203,6 +203,33 @@ const Shop = () => {
             </div>
           </div>
 
+          {/* Mobile Horizontal Quick-Category Scroll Pills */}
+          <div className="flex md:hidden items-center gap-2 overflow-x-auto pb-2 pt-3 no-scrollbar -mx-4 px-4">
+            <button
+              onClick={() => updateFilter('category', 'all')}
+              className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold transition ${
+                currentCategory === 'all'
+                  ? 'bg-[#7A1738] text-white shadow-sm'
+                  : 'bg-white text-gray-700 border border-blush-200 hover:bg-blush-50'
+              }`}
+            >
+              All Pieces
+            </button>
+            {categories.map((cat) => (
+              <button
+                key={cat._id}
+                onClick={() => updateFilter('category', cat.slug)}
+                className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold transition flex items-center gap-1 ${
+                  currentCategory === cat.slug
+                    ? 'bg-[#7A1738] text-white shadow-sm'
+                    : 'bg-white text-gray-700 border border-blush-200 hover:bg-blush-50'
+                }`}
+              >
+                <span>{cat.name.split('&')[0].trim()}</span>
+              </button>
+            ))}
+          </div>
+
           {/* Active Filter Pills */}
           {activeFiltersCount > 0 && (
             <div className="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-blush-200">

@@ -14,6 +14,7 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import api from '../services/api';
+import { USE_DUMMY_DATA } from '../data/dummyData';
 
 const Checkout = () => {
   const { cartItems, subtotal, shippingFee, discount, totalAmount, appliedCoupon, clearCart } = useCart();
@@ -169,6 +170,28 @@ const Checkout = () => {
       });
       rzp.open();
     } catch (err) {
+      if (USE_DUMMY_DATA) {
+        // Fallback demo order placement when static hosting API is offline
+        const simulatedOrderId = `RAC-${Math.floor(100000 + Math.random() * 900000)}`;
+        const simulatedOrder = {
+          _id: `ord_${Date.now()}`,
+          orderId: simulatedOrderId,
+          ...orderPayload,
+          paymentStatus: formData.paymentMethod === 'COD' ? 'COD' : 'Paid (Demo)',
+          createdAt: new Date().toISOString()
+        };
+
+        try {
+          const existing = JSON.parse(localStorage.getItem('resin_art_orders') || '[]');
+          localStorage.setItem('resin_art_orders', JSON.stringify([simulatedOrder, ...existing]));
+        } catch {}
+
+        clearCart();
+        toast.success(`Order placed successfully! Order ID: ${simulatedOrderId}`);
+        navigate(`/order-success/${simulatedOrderId}`);
+        return;
+      }
+
       toast.error(err.message);
       setIsProcessing(false);
     }
@@ -190,6 +213,13 @@ const Checkout = () => {
       setDemoSimulationOpen(false);
       navigate(`/order-success/${createdOrderDetails.orderId}`);
     } catch (err) {
+      if (USE_DUMMY_DATA) {
+        clearCart();
+        toast.success('Demo payment successful! Order marked as Paid.');
+        setDemoSimulationOpen(false);
+        navigate(`/order-success/${createdOrderDetails.orderId}`);
+        return;
+      }
       toast.error(err.message);
     } finally {
       setIsProcessing(false);

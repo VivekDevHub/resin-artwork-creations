@@ -40,30 +40,31 @@ const Navbar = () => {
     <>
       <header className="sticky top-0 z-40 bg-[#FFF9F5]/90 backdrop-blur-md border-b border-[#F4B6C2]/40 transition-all duration-300">
         {/* Top Luxury Announcement Bar */}
-        <div className="bg-[#7A1738] text-[#FFF9F5] text-[11px] md:text-xs py-2 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2">
-          <Sparkles className="w-3.5 h-3.5 text-[#DFBA3C] animate-pulse" />
-          <span>🏆 #1 in Indore &bull; Heirloom Specialist (Varmala &bull; Clocks &bull; Tables &bull; Workshops) &bull; Owner: श्री सांवरिया सेठ ❤️ &bull; WhatsApp: +91 93290 28062</span>
-          <Sparkles className="w-3.5 h-3.5 text-[#DFBA3C] animate-pulse" />
+        <div className="bg-[#7A1738] text-[#FFF9F5] text-[10px] sm:text-xs py-1.5 sm:py-2 px-3 sm:px-4 text-center font-medium tracking-wide flex items-center justify-center gap-1.5 sm:gap-2">
+          <Sparkles className="w-3 h-3 text-[#DFBA3C] shrink-0 animate-pulse" />
+          <span className="sm:hidden truncate">🏆 #1 Resin Heirloom Studio in Indore ❤️ WhatsApp: +91 93290 28062</span>
+          <span className="hidden sm:inline">🏆 #1 in Indore &bull; Heirloom Specialist (Varmala &bull; Clocks &bull; Tables &bull; Workshops) &bull; Owner: श्री सांवरिया सेठ ❤️ &bull; WhatsApp: +91 93290 28062</span>
+          <Sparkles className="w-3 h-3 text-[#DFBA3C] shrink-0 animate-pulse" />
         </div>
 
         {/* Main Navbar */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 md:h-24">
-            {/* Mobile Menu Button */}
-            <div className="flex items-center md:hidden">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20 md:h-24">
+            {/* Mobile Menu Button (visible on mobile and tablet < lg) */}
+            <div className="flex items-center lg:hidden mr-1 sm:mr-2">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl text-gray-700 hover:text-[#7A1738] hover:bg-blush-100 transition"
+                className="p-1.5 sm:p-2 rounded-xl text-gray-700 hover:text-[#7A1738] hover:bg-blush-100 transition"
                 aria-label="Toggle Navigation"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
               </button>
             </div>
 
             {/* Brand Logo & Title */}
-            <div className="flex items-center gap-3">
-              <Link to="/" className="flex items-center gap-3 group">
-                <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden p-0.5 border-2 border-[#C9A227]/40 shadow-sm group-hover:scale-105 transition duration-300 bg-white">
+            <div className="flex items-center gap-2 sm:gap-3 flex-1 lg:flex-none min-w-0">
+              <Link to="/" className="flex items-center gap-2 sm:gap-3 group min-w-0">
+                <div className="relative w-9 h-9 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full overflow-hidden p-0.5 border-2 border-[#C9A227]/40 shadow-sm group-hover:scale-105 transition duration-300 bg-white shrink-0">
                   <img
                     src="/assets/logo.png"
                     alt="Resin Artwork Creations Logo"
@@ -74,11 +75,11 @@ const Navbar = () => {
                     }}
                   />
                 </div>
-                <div className="flex flex-col">
-                  <span className="font-serif text-lg md:text-2xl font-bold tracking-tight text-[#2B1B20] group-hover:text-[#7A1738] transition leading-none">
+                <div className="flex flex-col min-w-0">
+                  <span className="font-serif text-xs sm:text-lg md:text-2xl font-bold tracking-tight text-[#2B1B20] group-hover:text-[#7A1738] transition leading-tight truncate">
                     RESIN ARTWORK CREATIONS
                   </span>
-                  <span className="font-script text-sm md:text-lg text-[#7A1738] tracking-wider mt-0.5">
+                  <span className="font-script text-[11px] sm:text-sm md:text-lg text-[#7A1738] tracking-wider truncate">
                     By Mahima Choukse
                   </span>
                 </div>

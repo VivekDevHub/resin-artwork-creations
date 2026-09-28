@@ -23,11 +23,18 @@ const OrderSuccess = () => {
     const fetchOrder = async () => {
       try {
         const { data } = await api.get(`/orders/${id}`);
-        if (data.success) {
+        if (data.success && data.order) {
           setOrder(data.order);
+        } else {
+          const savedOrders = JSON.parse(localStorage.getItem('resin_art_orders') || '[]');
+          const match = savedOrders.find((o) => o.orderId === id || o._id === id);
+          if (match) setOrder(match);
         }
       } catch (err) {
         console.warn('Could not load order details:', err.message);
+        const savedOrders = JSON.parse(localStorage.getItem('resin_art_orders') || '[]');
+        const match = savedOrders.find((o) => o.orderId === id || o._id === id);
+        if (match) setOrder(match);
       } finally {
         setLoading(false);
       }

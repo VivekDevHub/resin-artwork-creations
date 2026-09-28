@@ -16,7 +16,7 @@ const RootLayout = () => {
   return (
     <div className="flex flex-col min-h-screen relative selection:bg-[#F4B6C2] selection:text-[#7A1738]">
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 pb-16 md:pb-0">
         <Outlet />
       </main>
       <Footer />
